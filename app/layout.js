@@ -1,0 +1,20 @@
+import "@styles/globals.css";
+
+//metadatra
+export const metadata = {
+  title: "Promt Palace",
+  description: "Discover, Create & Share AI Prompts",
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body>
+        <div className="main">
+          <div className="gradient"></div>
+        </div>
+        <main className="app">{children}</main>
+      </body>
+    </html>
+  );
+}
