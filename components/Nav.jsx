@@ -126,7 +126,7 @@ export default function Nav() {
           </div>
         ) : (
           <>
-            {providers &&
+            {/* {providers &&
               Object.values(providers).map((p) => (
                 <button
                   type="button"
@@ -135,8 +135,17 @@ export default function Nav() {
                   className="black_btn"
                 >
                   Sign In
-                </button>
-              ))}
+                </button> */}
+            {providers && (
+              <button
+                type="button"
+                key={Object.values(providers)[0].name}
+                onClick={() => signIn(Object.values(providers)[0].id)}
+                className="black_btn"
+              >
+                Sign In
+              </button>
+            )}
           </>
         )}
       </div>
