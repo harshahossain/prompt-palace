@@ -68,17 +68,16 @@ export default function Nav() {
         ) : (
           // getting all provider but in this case only one provider from goolge auth 👇
           <>
-            {providers &&
-              Object.values(providers).map((p) => (
-                <button
-                  type="button"
-                  key={p.name}
-                  onClick={() => signIn(p.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button>
-              ))}
+            {providers && (
+              <button
+                type="button"
+                key={Object.values(providers)[0].name}
+                onClick={() => signIn(Object.values(providers)[0].id)}
+                className="black_btn"
+              >
+                Sign In
+              </button>
+            )}
           </>
         )}
       </div>
@@ -126,16 +125,6 @@ export default function Nav() {
           </div>
         ) : (
           <>
-            {/* {providers &&
-              Object.values(providers).map((p) => (
-                <button
-                  type="button"
-                  key={p.name}
-                  onClick={() => signIn(p.id)}
-                  className="black_btn"
-                >
-                  Sign In
-                </button> */}
             {providers && (
               <button
                 type="button"
@@ -151,4 +140,17 @@ export default function Nav() {
       </div>
     </nav>
   );
+}
+{
+  /* {providers &&
+              Object.values(providers).map((p) => (
+                <button
+                  type="button"
+                  key={p.name}
+                  onClick={() => signIn(p.id)}
+                  className="black_btn"
+                >
+                  Sign In
+                </button>
+              ))} */
 }
