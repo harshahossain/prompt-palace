@@ -10,6 +10,10 @@ export default function PromptCard({
   handleEdit,
   handleDelete,
 }) {
+  const { data: session } = useSession();
+  const pathName = usePathname();
+  const router = useRouter();
+
   const [copied, setCopied] = useState("");
 
   function handleCopy() {
@@ -57,6 +61,22 @@ export default function PromptCard({
       >
         #{post.tag}
       </p>
+      {session?.user.id === post.creator._id && pathName === "/profile" && (
+        <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
+          <p
+            onClick={handleEdit}
+            className="font-inter text-sm green-gradient cursor-pointer"
+          >
+            Edit
+          </p>
+          <p
+            onClick={handleDelete}
+            className="font-inter text-sm orange-gradient cursor-pointer"
+          >
+            Delete
+          </p>
+        </div>
+      )}
     </div>
   );
 }

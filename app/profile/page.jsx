@@ -9,16 +9,16 @@ import Profile from "@components/Profile";
 export default function MyProfile() {
   const { data: session } = useSession();
 
-  const [posts, setPosts] = useState([]);
+  const [myPosts, setMyPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
       const response = await fetch(`/api/prompt/${session?.user.id}/posts`);
       const data = await response.json();
-      setPosts(data);
+      setMyPosts(data);
     }
     if (session?.user.id) fetchPosts();
-  }, []);
+  }, [session?.user.id]);
 
   function handleEdit() {}
   async function handleDelete() {}
@@ -27,7 +27,7 @@ export default function MyProfile() {
     <Profile
       name="My"
       desc="Welcome to your personalized profile page"
-      data={[posts]}
+      data={myPosts}
       handleEdit={handleEdit}
       handleDelete={handleDelete}
     />
